@@ -83,6 +83,7 @@ namespace PrimerParcial
                 NombretextBox.Text = es.Nombres;
                 EdadnumericUpDown.Value = es.Edad;
                 CarreratextBox.Text = es.Carrera;
+                MontoExoneradotextBox.Text = es.MontoExonerado.ToString();
             }
             else
                 MessageBox.Show("Este estudiante no existe");

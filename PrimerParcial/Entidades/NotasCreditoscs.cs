@@ -20,7 +20,13 @@ namespace PrimerParcial.Entidades
 
         public NotasCreditoscs()
         {
-
+            NotaId = 0;
+            Fecha = string.Empty;
+            EstudianteId = 0;
+            Observaciones = string.Empty;
+            MontoAsignaciones = 0;
+            PctBeca = 0;
+            Monto = 0;
         }
 
         public NotasCreditoscs(string f, int eid, string o, float ma, float pctb, float m)

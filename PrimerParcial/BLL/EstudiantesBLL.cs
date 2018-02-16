@@ -84,7 +84,6 @@ namespace PrimerParcial.BLL
             {
                 throw;
             }
-
             return es;
         }
 
@@ -102,7 +101,6 @@ namespace PrimerParcial.BLL
             {
                 throw;
             }
-
             return us;
         }
     }

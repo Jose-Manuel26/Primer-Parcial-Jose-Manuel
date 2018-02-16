@@ -15,6 +15,8 @@ namespace PrimerParcial.Registros
 {
     public partial class rNotasCreditos : Form
     {
+        private Estudiantes estudiante;
+
         public rNotasCreditos()
         {
             InitializeComponent();
@@ -24,29 +26,30 @@ namespace PrimerParcial.Registros
         {
             NotaIdnumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
-            EstudianteId2numericUpDown.Value = 0;
+            EstudianteIdnumericUpDown.Value = 0;
             ObservacionestextBox.Text = string.Empty;
-            MontoAsignaturastextBox.Text = string.Empty;
-            PtcBecatextBox.Text = string.Empty;
+            MontoAsignaturanumericUpDown.Value = 0;
+            PctBecanumericUpDown.Value = 0;
             MontotextBox.Text = string.Empty;
+            EstudianteNombretextBox.Text = string.Empty;
         }
 
         private NotasCreditoscs GetNota()
         {
-            float ma = int.Parse(MontoAsignaturastextBox.Text);
-            float pct = int.Parse(PtcBecatextBox.Text);
-            float m = ma * pct;
+            float montoAsignatura = (float)MontoAsignaturanumericUpDown.Value;
+            float pctBeca = (float)PctBecanumericUpDown.Value;
+            float monto = montoAsignatura * pctBeca;
 
-            Estudiantes es = EstudiantesBLL.Buscar((int)EstudianteId2numericUpDown.Value);
-            int n = (es == null) ? 0 : es.Matricula;
+            estudiante = EstudiantesBLL.Buscar((int)EstudianteIdnumericUpDown.Value);
+            int estudianteId = (estudiante == null) ? 0 : estudiante.Matricula;
 
             return new NotasCreditoscs(
                 FechadateTimePicker.Value.ToString(),
-                n,
+                estudianteId,
                 ObservacionestextBox.Text,
-                ma,
-                pct,
-                m
+                montoAsignatura,
+                pctBeca,
+                monto
                 );
         }
 
@@ -60,32 +63,43 @@ namespace PrimerParcial.Registros
             NotasCreditoscs nota = NotasCreditosBLL.Buscar((int)NotaIdnumericUpDown.Value);
             if (nota == null)
             {
-                if (NotasCreditosBLL.Guardar(GetNota()))
+                NotasCreditoscs n = GetNota();
+
+                estudiante.MontoExonerado = n.Monto;
+              
+                if (NotasCreditosBLL.Guardar(n))
                     MessageBox.Show("Se guardo la nota.");
                 else
                     MessageBox.Show("No se guardo la nota.");
             }
             else
             {
-
                 nota.Fecha = FechadateTimePicker.Value.ToString();
-                nota.EstudianteId = (int)EstudianteId2numericUpDown.Value;
+                nota.EstudianteId = (int)EstudianteIdnumericUpDown.Value;
                 nota.Observaciones = ObservacionestextBox.Text;
-                nota.MontoAsignaciones = float.Parse(MontoAsignaturastextBox.Text);
-                nota.PctBeca = float.Parse(PtcBecatextBox.Text);
-                nota.Monto = float.Parse(MontoAsignaturastextBox.Text) * float.Parse(PtcBecatextBox.Text);
+                nota.MontoAsignaciones = (float)MontoAsignaturanumericUpDown.Value;
+                nota.PctBeca = (float)PctBecanumericUpDown.Value;
+                nota.Monto = nota.MontoAsignaciones * nota.PctBeca;
+                estudiante.MontoExonerado = nota.Monto;
 
                 if (NotasCreditosBLL.Modificar(nota))
                     MessageBox.Show("Se a modificado la nota");
                 else
                     MessageBox.Show("No se pudo modificar la nota");
             }
+
+            EstudiantesBLL.Modificar(estudiante);
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
             if (NotasCreditosBLL.Eliminar((int)NotaIdnumericUpDown.Value))
+            {
+                estudiante.MontoExonerado = 0;
+                EstudiantesBLL.Modificar(estudiante);
                 MessageBox.Show("Se a eliminado la nota");
+
+            }
             else
                 MessageBox.Show("No se pudo eliminar la nota");
 
@@ -98,18 +112,14 @@ namespace PrimerParcial.Registros
             new cNotasCreditos().Show();
         }
 
-        private void rNotasCreditos_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void BuscarEsIdbutton_Click(object sender, EventArgs e)
+        private void BuscarEstudianteIdbutton_Click(object sender, EventArgs e)
         {
-            Estudiantes es = EstudiantesBLL.Buscar((int)EstudianteId2numericUpDown.Value);
-            if (es != null)
+            estudiante = EstudiantesBLL.Buscar((int)EstudianteIdnumericUpDown.Value);
+            if (estudiante != null)
             {
-                EstudianteId2numericUpDown.Value = es.Matricula;
-                EsNombretextBox.Text = es.Nombres;
+                EstudianteIdnumericUpDown.Value = estudiante.Matricula;
+                EstudianteNombretextBox.Text = estudiante.Nombres;
             }
             else
                 MessageBox.Show("Este estudiante no existe");
@@ -120,23 +130,31 @@ namespace PrimerParcial.Registros
             NotasCreditoscs nota = NotasCreditosBLL.Buscar((int)NotaIdnumericUpDown.Value);
             if (nota != null)
             {
+                estudiante = EstudiantesBLL.Buscar(nota.EstudianteId);
+
                 NotaIdnumericUpDown.Value = nota.NotaId;
                 FechadateTimePicker.Value = DateTime.Parse(nota.Fecha);
-                EstudianteId2numericUpDown.Value = nota.EstudianteId;
+                EstudianteIdnumericUpDown.Value = estudiante.Matricula;
+                EstudianteNombretextBox.Text = estudiante.Nombres;
                 ObservacionestextBox.Text = nota.Observaciones;
-                MontoAsignaturastextBox.Text = nota.MontoAsignaciones.ToString();
-                PtcBecatextBox.Text = nota.PctBeca.ToString();
+                MontoAsignaturanumericUpDown.Value = (Decimal)nota.MontoAsignaciones;
+                PctBecanumericUpDown.Value = (Decimal)nota.PctBeca;
                 MontotextBox.Text = nota.Monto.ToString();
             }
             else
-                MessageBox.Show("Este estudiante no existe");
+                MessageBox.Show("Este credito no existe");
         }
 
-        private void MontotextBox_TextChanged(object sender, EventArgs e)
+        private void MontoAsignaturanumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if(MontoAsignaturastextBox.Text != string.Empty && 
-                PtcBecatextBox.Text != string.Empty)
-                MontotextBox.Text = (float.Parse(MontoAsignaturastextBox.Text) * float.Parse(PtcBecatextBox.Text)).ToString();
+            if (PctBecanumericUpDown.Value != 0)
+                MontotextBox.Text = (MontoAsignaturanumericUpDown.Value * PctBecanumericUpDown.Value).ToString();
+        }
+
+        private void PctBecanumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (MontoAsignaturanumericUpDown.Value != 0)
+                MontotextBox.Text = (MontoAsignaturanumericUpDown.Value * PctBecanumericUpDown.Value).ToString();
         }
     }
 }

@@ -41,6 +41,8 @@
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Consultarbutton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.MontoExoneradotextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdadnumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 114);
+            this.label3.Location = new System.Drawing.Point(13, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 2;
@@ -75,7 +77,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 162);
+            this.label4.Location = new System.Drawing.Point(13, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 3;
@@ -85,7 +87,7 @@
             // 
             this.EstudianteIdnumericUpDown.Location = new System.Drawing.Point(85, 29);
             this.EstudianteIdnumericUpDown.Name = "EstudianteIdnumericUpDown";
-            this.EstudianteIdnumericUpDown.Size = new System.Drawing.Size(112, 20);
+            this.EstudianteIdnumericUpDown.Size = new System.Drawing.Size(138, 20);
             this.EstudianteIdnumericUpDown.TabIndex = 4;
             // 
             // NombretextBox
@@ -97,21 +99,21 @@
             // 
             // CarreratextBox
             // 
-            this.CarreratextBox.Location = new System.Drawing.Point(85, 159);
+            this.CarreratextBox.Location = new System.Drawing.Point(85, 141);
             this.CarreratextBox.Name = "CarreratextBox";
             this.CarreratextBox.Size = new System.Drawing.Size(213, 20);
             this.CarreratextBox.TabIndex = 6;
             // 
             // EdadnumericUpDown
             // 
-            this.EdadnumericUpDown.Location = new System.Drawing.Point(85, 112);
+            this.EdadnumericUpDown.Location = new System.Drawing.Point(85, 106);
             this.EdadnumericUpDown.Name = "EdadnumericUpDown";
             this.EdadnumericUpDown.Size = new System.Drawing.Size(213, 20);
             this.EdadnumericUpDown.TabIndex = 7;
             // 
             // Nuevobutton
             // 
-            this.Nuevobutton.Location = new System.Drawing.Point(12, 225);
+            this.Nuevobutton.Location = new System.Drawing.Point(12, 222);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(66, 46);
             this.Nuevobutton.TabIndex = 8;
@@ -121,7 +123,7 @@
             // 
             // Eliminarbutton
             // 
-            this.Eliminarbutton.Location = new System.Drawing.Point(157, 225);
+            this.Eliminarbutton.Location = new System.Drawing.Point(157, 222);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(66, 46);
             this.Eliminarbutton.TabIndex = 9;
@@ -131,7 +133,7 @@
             // 
             // Guardarbutton
             // 
-            this.Guardarbutton.Location = new System.Drawing.Point(85, 225);
+            this.Guardarbutton.Location = new System.Drawing.Point(85, 222);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(66, 46);
             this.Guardarbutton.TabIndex = 10;
@@ -151,7 +153,7 @@
             // 
             // Consultarbutton
             // 
-            this.Consultarbutton.Location = new System.Drawing.Point(232, 225);
+            this.Consultarbutton.Location = new System.Drawing.Point(232, 222);
             this.Consultarbutton.Name = "Consultarbutton";
             this.Consultarbutton.Size = new System.Drawing.Size(66, 46);
             this.Consultarbutton.TabIndex = 12;
@@ -159,11 +161,30 @@
             this.Consultarbutton.UseVisualStyleBackColor = true;
             this.Consultarbutton.Click += new System.EventHandler(this.Consultarbutton_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 180);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Monto exonerado";
+            // 
+            // MontoExoneradotextBox
+            // 
+            this.MontoExoneradotextBox.Location = new System.Drawing.Point(109, 177);
+            this.MontoExoneradotextBox.Name = "MontoExoneradotextBox";
+            this.MontoExoneradotextBox.ReadOnly = true;
+            this.MontoExoneradotextBox.Size = new System.Drawing.Size(189, 20);
+            this.MontoExoneradotextBox.TabIndex = 14;
+            // 
             // rEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 297);
+            this.ClientSize = new System.Drawing.Size(312, 286);
+            this.Controls.Add(this.MontoExoneradotextBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Consultarbutton);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.Guardarbutton);
@@ -178,7 +199,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rEstudiantes";
-            this.Text = "Form1";
+            this.Text = "Registro de Estudiante";
             ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdadnumericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -201,6 +222,8 @@
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.Button Consultarbutton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox MontoExoneradotextBox;
     }
 }
 
