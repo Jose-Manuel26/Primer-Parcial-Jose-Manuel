@@ -29,7 +29,7 @@ namespace PrimerParcial.Consultas
             {
                 case 0: //Estudiante
                     dato = int.Parse(FiltrartextBox.Text);
-                    filter = x => x.Matricula == dato;
+                    filter = x => x.EstudianteId == dato;
                     break;
 
                 case 1: //Nombre
@@ -43,6 +43,10 @@ namespace PrimerParcial.Consultas
 
                 case 3: //Carrera
                     filter = x => x.Carrera.Contains(FiltrartextBox.Text);
+                    break;
+
+                case 4://Monto exonarado
+                    filter = x => float.Parse(FiltrartextBox.Text) >= x.MontoExonerado;
                     break;
             }
 

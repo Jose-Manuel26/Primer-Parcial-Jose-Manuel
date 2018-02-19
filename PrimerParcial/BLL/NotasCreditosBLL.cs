@@ -11,7 +11,7 @@ namespace PrimerParcial.BLL
 {
     public class NotasCreditosBLL
     {
-        public static bool Guardar(NotasCreditoscs nota)
+        public static bool Guardar(NotasCreditos nota)
         {
             bool flag = false;
 
@@ -31,7 +31,7 @@ namespace PrimerParcial.BLL
             return flag;
         }
 
-        public static bool Modificar(NotasCreditoscs nota)
+        public static bool Modificar(NotasCreditos nota)
         {
             bool flag = false;
 
@@ -58,7 +58,7 @@ namespace PrimerParcial.BLL
             try
             {
                 NotasCreditosDb db = new NotasCreditosDb();
-                NotasCreditoscs nota = db.NotaCredito.Find(id);
+                NotasCreditos nota = db.NotaCredito.Find(id);
                 db.NotaCredito.Remove(nota);
                 db.SaveChanges();
 
@@ -72,9 +72,9 @@ namespace PrimerParcial.BLL
             return flag;
         }
 
-        public static NotasCreditoscs Buscar(int id)
+        public static NotasCreditos Buscar(int id)
         {
-            NotasCreditoscs nota = null;
+            NotasCreditos nota = null;
             try
             {
                 NotasCreditosDb db = new NotasCreditosDb();
@@ -88,9 +88,9 @@ namespace PrimerParcial.BLL
             return nota;
         }
 
-        public static List<NotasCreditoscs> GetList(Expression<Func<NotasCreditoscs, bool>> filter)
+        public static List<NotasCreditos> GetList(Expression<Func<NotasCreditos, bool>> filter)
         {
-            List<NotasCreditoscs> us = null;
+            List<NotasCreditos> us = null;
 
             try
             {

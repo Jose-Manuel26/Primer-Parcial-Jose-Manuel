@@ -52,7 +52,8 @@
             "EstudianteId",
             "Nombre",
             "Edad",
-            "Carrera"});
+            "Carrera",
+            "Monto Exonerado"});
             this.DatoscomboBox.Location = new System.Drawing.Point(13, 55);
             this.DatoscomboBox.Name = "DatoscomboBox";
             this.DatoscomboBox.Size = new System.Drawing.Size(121, 21);

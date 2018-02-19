@@ -105,9 +105,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 164);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.Size = new System.Drawing.Size(88, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Porciento Beca";
+            this.label6.Text = "Porciento Beca%";
             // 
             // label7
             // 
@@ -122,7 +122,7 @@
             // 
             this.NotaIdnumericUpDown.Location = new System.Drawing.Point(107, 24);
             this.NotaIdnumericUpDown.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});
@@ -236,7 +236,7 @@
             // 
             this.MontoAsignaturanumericUpDown.Location = new System.Drawing.Point(107, 132);
             this.MontoAsignaturanumericUpDown.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});
@@ -249,7 +249,7 @@
             // 
             this.PctBecanumericUpDown.Location = new System.Drawing.Point(107, 162);
             this.PctBecanumericUpDown.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});

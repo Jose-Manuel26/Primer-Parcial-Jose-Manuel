@@ -87,7 +87,7 @@
     <Compile Include="DAL\EstudiantesDb.cs" />
     <Compile Include="DAL\NotasCreditosDb.cs" />
     <Compile Include="Entidades\Estudiantes.cs" />
-    <Compile Include="Entidades\NotasCreditoscs.cs" />
+    <Compile Include="Entidades\NotasCreditos.cs" />
     <Compile Include="Registros\Registro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,10 +108,10 @@
     <Compile Include="Registros\rNotasCreditos.Designer.cs">
       <DependentUpon>rNotasCreditos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\CrystalReport1.cs">
+    <Compile Include="Reportes\ReporteEstudiante.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>ReporteEstudiante.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Consultas\cEstudiantes.resx">
@@ -138,9 +138,9 @@
     <EmbeddedResource Include="Registros\rNotasCreditos.resx">
       <DependentUpon>rNotasCreditos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CrystalReport1.rpt">
+    <EmbeddedResource Include="Reportes\ReporteEstudiante.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>ReporteEstudiante.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

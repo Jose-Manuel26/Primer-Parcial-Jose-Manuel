@@ -16,14 +16,14 @@ namespace PrimerParcial.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class ReporteEstudiante : ReportClass {
         
-        public CrystalReport1() {
+        public ReporteEstudiante() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "ReporteEstudiante.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PrimerParcial.Reportes {
         
         public override string FullResourceName {
             get {
-                return "PrimerParcial.Reportes.CrystalReport1.rpt";
+                return "PrimerParcial.Reportes.ReporteEstudiante.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace PrimerParcial.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedReporteEstudiante : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedReporteEstudiante() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace PrimerParcial.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            ReporteEstudiante rpt = new ReporteEstudiante();
             rpt.Site = this.Site;
             return rpt;
         }

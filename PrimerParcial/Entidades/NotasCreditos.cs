@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace PrimerParcial.Entidades
 {
-    public class NotasCreditoscs
+    public class NotasCreditos
     {
         [Key]
         public int NotaId { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public int EstudianteId { get; set; }
+        public double MontoAsignaciones { get; set; }
+        public double PctBeca { get; set; }
+        public double Monto { get; set; }
         public string Observaciones { get; set; }
-        public float MontoAsignaciones { get; set; }
-        public float PctBeca { get; set; }
-        public float Monto { get; set; }
 
-        public NotasCreditoscs()
+        public NotasCreditos()
         {
             NotaId = 0;
-            Fecha = string.Empty;
+            Fecha = DateTime.Now;
             EstudianteId = 0;
             Observaciones = string.Empty;
             MontoAsignaciones = 0;
@@ -29,7 +29,7 @@ namespace PrimerParcial.Entidades
             Monto = 0;
         }
 
-        public NotasCreditoscs(string f, int eid, string o, float ma, float pctb, float m)
+        public NotasCreditos(DateTime f, int eid, double ma, double pctb, double m, string o)
         {
             NotaId = 0;
             Fecha = f;

@@ -10,15 +10,15 @@ namespace PrimerParcial.Entidades
     public class Estudiantes
     {
         [Key]
-        public int Matricula { get; set; }
+        public int EstudianteId { get; set; }
         public string Nombres { get; set; }
         public int Edad { get; set; }
         public string Carrera { get; set; }
-        public float MontoExonerado { get; set; }
+        public double MontoExonerado { get; set; }
 
         public Estudiantes()
         {
-            Matricula = 0;
+            EstudianteId = 0;
             Nombres = string.Empty;
             Edad = 0;
             Carrera = string.Empty;

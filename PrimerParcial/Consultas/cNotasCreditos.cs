@@ -22,7 +22,7 @@ namespace PrimerParcial.Consultas
 
         private void ImprimirNotabutton_Click(object sender, EventArgs e)
         {
-            Expression<Func<NotasCreditoscs, bool>> filter = x => true;
+            Expression<Func<NotasCreditos, bool>> filter = x => true;
             int dato = 0;
 
             switch (DatoNotacomboBox.SelectedIndex)
@@ -31,9 +31,10 @@ namespace PrimerParcial.Consultas
                     dato = int.Parse(ImprimirNotatextBox.Text);
                     filter = x => x.NotaId == dato;
                     break;
-
+                   
                 case 1: //Fecha
-                    filter = x => x.Fecha.Contains(ImprimirNotatextBox.Text);
+                    DateTime date = DateTime.Parse(ImprimirNotatextBox.Text);
+                    filter = x => x.Fecha.Date == date.Date;
                     break;
 
                 case 2: //EstudinateId

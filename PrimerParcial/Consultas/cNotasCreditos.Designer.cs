@@ -74,7 +74,7 @@
             this.ImprimirNotabutton.Name = "ImprimirNotabutton";
             this.ImprimirNotabutton.Size = new System.Drawing.Size(75, 23);
             this.ImprimirNotabutton.TabIndex = 3;
-            this.ImprimirNotabutton.Text = "button1";
+            this.ImprimirNotabutton.Text = "Imprimir";
             this.ImprimirNotabutton.UseVisualStyleBackColor = true;
             this.ImprimirNotabutton.Click += new System.EventHandler(this.ImprimirNotabutton_Click);
             // 

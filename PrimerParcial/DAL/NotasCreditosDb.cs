@@ -10,13 +10,15 @@ namespace PrimerParcial.DAL
 {
     public class NotasCreditosDb : DbContext
     {
-
-        public NotasCreditosDb() : base("ConStr")
+        //ConStr - para conectar al SQL Server Database file "EstudiantesDb".
+        //ConStrServer - para conectar a la base de datos "EstudinateDb" 
+        //en el servidor local de SQL Server.
+        public NotasCreditosDb() : base("ConStrServer")
         {
 
         }
 
-        public DbSet<NotasCreditoscs> NotaCredito { get; set; }
+        public DbSet<NotasCreditos> NotaCredito { get; set; }
     
     }
 }

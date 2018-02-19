@@ -33,5 +33,16 @@ namespace PrimerParcial.Properties {
                 return ((string)(this["ConStr"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-2TQRC26N\\SQLEXPRESS;Initial Catalog=EstudianteDb;Integrated Se" +
+            "curity=True")]
+        public string ConStrServer {
+            get {
+                return ((string)(this["ConStrServer"]));
+            }
+        }
     }
 }

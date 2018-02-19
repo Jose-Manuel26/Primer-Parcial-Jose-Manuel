@@ -10,8 +10,10 @@ namespace PrimerParcial.DAL
 {
     public class EstudiantesDb : DbContext
     {
-
-        public EstudiantesDb() : base("ConStr")
+        //ConStr - para conectar al SQL Server Database file "EstudiantesDb".
+        //ConStrServer - para conectar a la base de datos "EstudinateDb" 
+        //en el servidor local de SQL Server.
+        public EstudiantesDb() : base("ConStrServer")
         {
 
         }
