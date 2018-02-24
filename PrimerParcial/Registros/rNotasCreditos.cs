@@ -64,6 +64,7 @@ namespace PrimerParcial.Registros
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
             NotasCreditos n = GetNota();
+            int a = 0;
             NotasCreditos nota = NotasCreditosBLL.Buscar((int)NotaIdnumericUpDown.Value);
             if (nota == null)
             {                       
