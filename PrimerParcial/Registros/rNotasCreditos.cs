@@ -16,6 +16,7 @@ namespace PrimerParcial.Registros
     public partial class rNotasCreditos : Form
     {
         private Estudiantes estudiante;
+        public static double DIFERENCIA;//Almacena la diferencia entre monto actual y el anterior
 
         public rNotasCreditos()
         {
@@ -36,15 +37,16 @@ namespace PrimerParcial.Registros
 
         private NotasCreditos GetNota()
         {
+            int notaId = (NotaIdnumericUpDown.Value == 0) ? 0 : (int)NotaIdnumericUpDown.Value;
             double montoAsignatura = (double)MontoAsignaturanumericUpDown.Value;
             double pctBeca = (double)PctBecanumericUpDown.Value;
             double res = (pctBeca/100) * montoAsignatura; 
             double monto = montoAsignatura + res;
 
-            estudiante = EstudiantesBLL.Buscar((int)EstudianteIdnumericUpDown.Value);
             int estudianteId = (estudiante == null) ? 0 : estudiante.EstudianteId;
 
             return new NotasCreditos(
+                notaId,
                 FechadateTimePicker.Value,
                 estudianteId,             
                 montoAsignatura,
@@ -61,43 +63,32 @@ namespace PrimerParcial.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
+            NotasCreditos n = GetNota();
             NotasCreditos nota = NotasCreditosBLL.Buscar((int)NotaIdnumericUpDown.Value);
             if (nota == null)
-            {
-                NotasCreditos n = GetNota();
-
-                estudiante.MontoExonerado += n.Monto;
-              
-                if (NotasCreditosBLL.Guardar(n))
+            {                       
+                if (NotasCreditosBLL.Guardar(n, estudiante))
                     MessageBox.Show("Se guardo la nota.");
                 else
                     MessageBox.Show("No se guardo la nota.");
             }
             else
-            {
-                nota.Fecha = FechadateTimePicker.Value;
-                nota.EstudianteId = (int)EstudianteIdnumericUpDown.Value;
-                nota.Observaciones = ObservacionestextBox.Text;
-                nota.MontoAsignaciones = (double)MontoAsignaturanumericUpDown.Value;
-                nota.PctBeca = (double)PctBecanumericUpDown.Value;
-                double res = (nota.PctBeca / 100) * nota.MontoAsignaciones;
-                nota.Monto = nota.MontoAsignaciones + res;
-                estudiante.MontoExonerado += nota.Monto;
+            {              
+                DIFERENCIA = n.Monto - nota.Monto;
 
-                if (NotasCreditosBLL.Modificar(nota))
+                if (NotasCreditosBLL.Modificar(n, estudiante))
                     MessageBox.Show("Se a modificado la nota");
                 else
                     MessageBox.Show("No se pudo modificar la nota");
             }
-
-            EstudiantesBLL.Modificar(estudiante);
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            if (NotasCreditosBLL.Eliminar((int)NotaIdnumericUpDown.Value))
+            NotasCreditos nota = NotasCreditosBLL.Buscar((int)NotaIdnumericUpDown.Value);
+            if (NotasCreditosBLL.Eliminar(nota.NotaId))
             {
-                estudiante.MontoExonerado = 0;
+                estudiante.MontoExonerado -= nota.Monto;
                 EstudiantesBLL.Modificar(estudiante);
                 MessageBox.Show("Se a eliminado la nota");
 

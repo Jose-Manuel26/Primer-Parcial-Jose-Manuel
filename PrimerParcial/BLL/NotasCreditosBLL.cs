@@ -6,18 +6,22 @@ using System.Threading.Tasks;
 using PrimerParcial.Entidades;
 using PrimerParcial.DAL;
 using System.Linq.Expressions;
+using PrimerParcial.Registros;
 
 namespace PrimerParcial.BLL
 {
     public class NotasCreditosBLL
     {
-        public static bool Guardar(NotasCreditos nota)
+        public static bool Guardar(NotasCreditos nota, Estudiantes estudiante)
         {
             bool flag = false;
 
             try
             {
                 NotasCreditosDb db = new NotasCreditosDb();
+
+                estudiante.MontoExonerado += nota.Monto;
+                EstudiantesBLL.Modificar(estudiante);
                 db.NotaCredito.Add(nota);
                 db.SaveChanges();
 
@@ -31,13 +35,16 @@ namespace PrimerParcial.BLL
             return flag;
         }
 
-        public static bool Modificar(NotasCreditos nota)
+        public static bool Modificar(NotasCreditos nota, Estudiantes estudiante)
         {
             bool flag = false;
 
             try
             {
                 NotasCreditosDb db = new NotasCreditosDb();
+
+                estudiante.MontoExonerado += rNotasCreditos.DIFERENCIA;
+                EstudiantesBLL.Modificar(estudiante);
                 db.Entry(nota).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
@@ -90,12 +97,12 @@ namespace PrimerParcial.BLL
 
         public static List<NotasCreditos> GetList(Expression<Func<NotasCreditos, bool>> filter)
         {
-            List<NotasCreditos> us = null;
+            List<NotasCreditos> list = null;
 
             try
             {
                 NotasCreditosDb db = new NotasCreditosDb();
-                us = db.NotaCredito.Where(filter).ToList();
+                list = db.NotaCredito.Where(filter).ToList();
 
             }
             catch (Exception)
@@ -103,7 +110,7 @@ namespace PrimerParcial.BLL
                 throw;
             }
 
-            return us;
+            return list;
         }
     }
 }

@@ -29,9 +29,9 @@ namespace PrimerParcial.Entidades
             Monto = 0;
         }
 
-        public NotasCreditos(DateTime f, int eid, double ma, double pctb, double m, string o)
+        public NotasCreditos(int n,DateTime f, int eid, double ma, double pctb, double m, string o)
         {
-            NotaId = 0;
+            NotaId = n;
             Fecha = f;
             EstudianteId = eid;
             Observaciones = o;
